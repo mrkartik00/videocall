@@ -1,3 +1,7 @@
+[runtime]
+engine = "nodejs"
+version = "16"
+
 [phases.install]
 server = "cd server && npm install"
 client = "cd client && npm install"
