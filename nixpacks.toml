@@ -1,13 +1,16 @@
-[runtime]
-engine = "nodejs"
-version = "16"
+[build]
+  # Define the build command that will install dependencies and build both the server and client
+  build = """
+    # Install dependencies for the server and client
+    cd server && npm install && cd ../client && npm install
+    
+    # Build the frontend
+    cd client && npm run build
+    
+    # Return to the server directory
+    cd ../server
+  """
 
-[phases.install]
-server = "cd server && npm install"
-client = "cd client && npm install"
-
-[phases.build]
-client = "cd client && npm run build"
-
-[phases.start]
-server = "cd server && npm start"
+[start]
+  # Start the application after the build process
+  start = "node index.js"
